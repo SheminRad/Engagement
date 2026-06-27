@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shemin & Ömercan - Engagement</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://googleapis.com" rel="stylesheet">
+
+<!--    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Great+Vibes&family=Noto+Naskh+Arabic:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">-->
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            100: '#fcf6d6',
+                            200: '#f7eaa1',
+                            300: '#f0d964',
+                            400: '#e8c430',
+                            500: '#d9a915',
+                            600: '#c28b0f',
+                            700: '#a36a10',
+                            800: '#855314',
+                            900: '#6f4415',
+                        },
+                        navy: {
+                            900: '#0a192f',
+                            800: '#112240',
+                        },
+                        burgundy: '#5c162e',
+                        cream: '#fcfbf8'
+                    },
+                    fontFamily: {
+                        sans: ['Playfair Display', 'serif'],
+                        serif: ['Cinzel', 'serif'],
+                        script: ['Great Vibes', 'cursive'],
+                        arabic: ['Noto Naskh Arabic', 'serif'],
+                        persian: ['Amiri', 'serif'],
+                    },
+                    backgroundImage: {
+                        'pattern': "url('data:image/svg+xml,%3Csvg width=\\'60\\' height=\\'60\\' viewBox=\\'0 0 60 60\\' xmlns=\\'http://www.w3.org/2000/svg\\'%3E%3Cg fill=\\'none\\' fill-rule=\\'evenodd\\'%3E%3Cg fill=\\'%23d9a915\\' fill-opacity=\\'0.1\\'%3E%3Cpath d=\\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')",
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0a192f;
+            color: #fcfbf8;
+            overflow-x: hidden;
+        }
+
+        /* Elaborate Border Styling for the card */
+        .ornate-border {
+            position: relative;
+            background-color: #112240;
+            border: 1px solid #d9a915;
+            box-shadow: inset 0 0 50px rgba(0,0,0,0.5), 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .ornate-border::before, .ornate-border::after {
+            content: '';
+            position: absolute;
+            top: 10px; bottom: 10px; left: 10px; right: 10px;
+            border: 1px solid rgba(217, 169, 21, 0.4);
+            pointer-events: none;
+        }
+        .ornate-border::after {
+            top: 15px; bottom: 15px; left: 15px; right: 15px;
+            border: 1px dashed rgba(217, 169, 21, 0.3);
+        }
+
+        /* Corner motifs using pseudo-elements */
+        .corner-tl, .corner-tr, .corner-bl, .corner-br {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z' fill='none' stroke='%23d9a915' stroke-width='2'/%3E%3Cpath d='M0,0 L80,0 C80,44.18 44.18,80 0,80 L0,0 Z' fill='none' stroke='%23d9a915' stroke-width='1' stroke-dasharray='4,4'/%3E%3Cpath d='M0,0 L60,0 C60,33.14 33.14,60 0,60 L0,0 Z' fill='none' stroke='%23d9a915' stroke-width='1'/%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.8;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .corner-tl { top: -2px; left: -2px; }
+        .corner-tr { top: -2px; right: -2px; transform: scaleX(-1); }
+        .corner-bl { bottom: -2px; left: -2px; transform: scaleY(-1); }
+        .corner-br { bottom: -2px; right: -2px; transform: scale(-1, -1); }
+
+        .gold-text-gradient {
+            background: linear-gradient(to right, #c28b0f, #f7eaa1, #d9a915, #f7eaa1, #c28b0f);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-size: 200% auto;
+            animation: shine 5s linear infinite;
+        }
+
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Divider ornamental styling */
+        .divider-ornament {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 2rem 0;
+            opacity: 0.7;
+        }
+        .divider-line {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #d9a915, transparent);
+            flex-grow: 1;
+        }
+        .divider-icon {
+            margin: 0 1rem;
+            color: #d9a915;
+            font-size: 1.2rem;
+        }
+
+        /* Form Styling */
+        .custom-radio {
+            appearance: none;
+            background-color: transparent;
+            margin: 0;
+            font: inherit;
+            color: currentColor;
+            width: 1.15em;
+            height: 1.15em;
+            border: 0.1em solid #d9a915;
+            border-radius: 50%;
+            display: grid;
+            place-content: center;
+        }
+        .custom-radio::before {
+            content: "";
+            width: 0.65em;
+            height: 0.65em;
+            border-radius: 50%;
+            transform: scale(0);
+            transition: 120ms transform ease-in-out;
+            box-shadow: inset 1em 1em #d9a915;
+        }
+        .custom-radio:checked::before {
+            transform: scale(1);
+        }
+
+        /* Navigation dots */
+        .nav-dot {
+            transition: all 0.3s ease;
+        }
+        .nav-dot.active {
+            transform: scale(1.5);
+            background-color: #d9a915;
+        }
+
+        /* Parallax Image Effect */
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body class="antialiased bg-pattern font-sans relative">
+
+    <!-- Fixed Navigation Dots -->
+    <div class="fixed right-4 top-1/2 transform -translate-y-1/2 z-50 flex flex-col gap-4">
+        <a href="#invitation" class="nav-dot w-3 h-3 rounded-full border border-gold-500 bg-transparent" id="dot-invitation" title="Invitation"></a>
+        <a href="#gallery" class="nav-dot w-3 h-3 rounded-full border border-gold-500 bg-transparent" id="dot-gallery" title="Gallery"></a>
+        <a href="#rsvp" class="nav-dot w-3 h-3 rounded-full border border-gold-500 bg-transparent" id="dot-rsvp" title="RSVP"></a>
+    </div>
+
+    <!-- Page 1: The Invitation Card -->
+    <section id="invitation" class="min-h-screen flex items-center justify-center p-4 py-12 relative z-10">
+        
+        <div class="ornate-border max-w-4xl w-full mx-auto p-8 md:p-16 text-center relative overflow-hidden fade-in-up">
+            
+            <!-- Corner Motifs -->
+            <div class="corner-tl"></div>
+            <div class="corner-tr"></div>
+            <div class="corner-bl"></div>
+            <div class="corner-br"></div>
+
+            <!-- Top Ornament -->
+            <div class="mb-8 text-gold-500 opacity-80">
+                <i class="fa-solid fa-moon text-2xl mx-2"></i>
+                <i class="fa-solid fa-star text-sm align-top"></i>
+            </div>
+
+            <!-- HEADER: Names -->
+            <div class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-16 mb-8 mt-4">
+                
+                <!-- Left: Shemin (with Persian) -->
+                <div class="flex flex-col items-center relative">
+                    <span class="font-persian text-2xl md:text-4xl text-gold-300 absolute -top-8 md:-top-10 opacity-80 tracking-widest drop-shadow-lg">شمین</span>
+                    <h1 class="font-script text-5xl md:text-7xl lg:text-8xl gold-text-gradient drop-shadow-md">Shemin</h1>
+                </div>
+
+                <!-- Center: Ampersand -->
+                <div class="font-serif text-3xl md:text-4xl text-gold-500 opacity-60 px-4 py-2">
+                    &
+                </div>
+
+                <!-- Right: Ömercan -->
+                <div class="flex flex-col items-center relative">
+                    <!-- Placeholder for symmetry, or could add an Ottoman motif here if desired -->
+                    <span class="text-3xl md:text-4xl text-transparent absolute -top-8 md:-top-10 select-none"></span>
+
+                    <span class="font-persian text-2xl md:text-4xl text-gold-300 absolute -top-8 md:-top-10 opacity-80 tracking-widest drop-shadow-lg">عمرجان</span>
+
+                    <!-- Use &Ouml; for capital Ö -->
+                    <h1 class="font-script text-5xl md:text-7xl lg:text-8xl gold-text-gradient drop-shadow-md">&Ouml;mercan</h1>
+
+                </div>
+            </div>
+
+            <div class="divider-ornament">
+                <div class="divider-line"></div>
+                <div class="divider-icon"><i class="fa-solid fa-fan"></i></div>
+                <div class="divider-line"></div>
+            </div>
+
+            <!-- MAIN TITLE -->
+            <div class="mb-10 fade-in-up delay-100">
+                <h2 class="font-serif text-sm md:text-lg tracking-[0.2em] md:tracking-[0.3em] text-gold-200">
+                    İSTEME & NİŞAN <span class="mx-2 text-gold-600">|</span> 
+                    <span class="font-persian text-lg md:text-xl">خواستگاری & نامزدی</span> <span class="mx-2 text-gold-600">|</span> 
+                    ENGAGEMENT
+                </h2>
+            </div>
+
+            <!-- QUOTES / WELCOME -->
+            <div class="space-y-4 mb-12 fade-in-up delay-200 max-w-2xl mx-auto">
+                <p class="text-lg md:text-xl italic text-cream font-light tracking-wide">
+                    "Canı canına, ruhu ruhuna bağlandı."
+                </p>
+                <p class="font-persian text-xl md:text-2xl text-gold-300 leading-relaxed" dir="rtl">
+                    «جانی به جان، روانی به روان گره خورده است.»
+                </p>
+                <p class="text-md md:text-lg italic text-cream font-light tracking-wide">
+                    "Two hearts, one life, forever bound."
+                </p>
+                
+                <div class="mt-8 pt-4">
+                    <p class="text-md uppercase tracking-widest text-gold-400 mb-2 font-serif">
+                        Sizleri, bu güzel birlikteliği birlikte kutlamaya davet ediyoruz.
+                    </p>
+                    <p class="font-persian text-lg text-cream opacity-80" dir="rtl">
+                        شما را به جشن این پیوند زیبا دعوت می‌کنیم.
+                    </p>
+                    <p class="text-md uppercase tracking-widest text-gold-400 mb-2 font-serif">
+
+                        We invite you to celebrate this beautiful union.
+                    </p>
+
+
+                </div>
+            </div>
+
+            <div class="divider-ornament">
+                <div class="divider-line"></div>
+                <div class="divider-icon"><i class="fa-solid fa-gem text-[0.6rem]"></i></div>
+                <div class="divider-line"></div>
+            </div>
+
+            <!-- EVENT DETAILS -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-4 my-10 fade-in-up delay-300">
+                <!-- Date & Time -->
+                <div class="flex flex-col justify-center items-center md:border-r border-gold-800 px-4">
+                    <h3 class="font-serif text-xl text-gold-400 mb-4 tracking-widest uppercase border-b border-gold-800/50 pb-2 inline-block">When</h3>
+                    <div class="space-y-2 text-center">
+                        <p class="font-serif text-lg tracking-wider">9 Temmuz 2026 (Perşembe)</p>
+                        <p class="font-persian text-xl text-gold-200"> (پنجشنبه) ۱۸ تیر ۱۴۰۵</p>
+                        <p class="font-serif text-sm tracking-widest opacity-80">July 9, 2026 (Thursday)</p>
+                        
+                        <div class="h-4"></div>
+                        
+                        <p class="font-serif text-xl tracking-wider">19:30</p>
+                        <p class="font-persian text-xl text-gold-200">۱۹:۳۰</p>
+                        <p class="font-serif text-sm tracking-widest opacity-80">7:30 PM</p>
+                    </div>
+                </div>
+
+                <!-- Location -->
+                <div class="flex flex-col justify-center items-center px-4">
+                    <h3 class="font-serif text-xl text-gold-400 mb-4 tracking-widest uppercase border-b border-gold-800/50 pb-2 inline-block">Where</h3>
+                    <div class="text-center space-y-3">
+                        <i class="fa-solid fa-location-dot text-gold-500 text-2xl mb-2"></i>
+                        <h4 class="font-serif text-xl tracking-widest leading-tight">Volim Davet<br>ISTANBUL</h4>
+                        <p class="text-sm tracking-widest opacity-80 font-serif">استانبول, Turkey</p>
+                        
+                        <!-- Map Link -->
+                        <a href="https://maps.app.goo.gl/Bcaxe4CbXFn2PB4CA" class="inline-block mt-4 text-xs font-serif tracking-widest uppercase border border-gold-600 text-gold-400 px-4 py-2 hover:bg-gold-600 hover:text-navy-900 transition-colors duration-300">
+                            View Map / Harıtayı Göster / نقشه راه
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bottom Ornament -->
+            <div class="mt-8 text-gold-500 opacity-50">
+                <i class="fa-solid fa-fan text-xl rotate-180"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 2: Photo Section -->
+    <section id="gallery" class="min-h-screen flex items-center justify-center py-16 relative">
+        <!-- Parallax Background Overlay -->
+        <div class="absolute inset-0 bg-navy-900/80 z-0"></div>
+        
+        <div class="container mx-auto px-4 z-10 fade-in-up">
+            <div class="text-center mb-10">
+                <h2 class="font-script text-5xl md:text-6xl text-gold-400 mb-2">Our Story Begins</h2>
+                <div class="w-24 h-1 bg-gold-600 mx-auto rounded-full opacity-50"></div>
+            </div>
+
+            <div class="max-w-3xl mx-auto relative group">
+                <!-- Decorative Frame around Image -->
+                <div class="absolute -inset-4 border-2 border-gold-700/50 transform group-hover:scale-[1.02] transition-transform duration-500 pointer-events-none z-0"></div>
+                <div class="absolute -inset-4 border border-gold-500/30 transform group-hover:scale-[1.03] rotate-1 transition-transform duration-500 pointer-events-none z-0"></div>
+                
+                <div class="relative z-10 overflow-hidden shadow-2xl shadow-black/50">
+                    <img src="img.png" alt="Shemin and Ömercan" class="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700 ease-in-out">
+                    
+                    <!-- Overlay gradient -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end justify-center pb-8">
+                        <p class="font-script text-4xl text-cream tracking-wide drop-shadow-lg">Forever</p>
+                    </div>
+                </div>
+                
+                <!-- Corner details for photo frame -->
+                <i class="fa-solid fa-leaf absolute -top-6 -left-6 text-gold-500 text-2xl -rotate-45 z-20 opacity-80"></i>
+                <i class="fa-solid fa-leaf absolute -bottom-6 -right-6 text-gold-500 text-2xl rotate-[135deg] z-20 opacity-80"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 3: RSVP Section -->
+    <section id="rsvp" class="min-h-screen flex items-center justify-center p-4 py-16 relative z-10 bg-navy-800/50 backdrop-blur-sm border-t border-gold-900/30">
+        
+        <div class="max-w-2xl w-full mx-auto bg-navy-900/90 p-8 md:p-12 border border-gold-700/40 shadow-2xl fade-in-up rounded-sm relative">
+            
+            <div class="text-center mb-8">
+<!--                <h2 class="font-serif text-3xl md:text-4xl text-gold-400 tracking-[0.2em] mb-4">RSVP</h2>-->
+                <div class="divider-ornament !my-4">
+                    <div class="divider-line"></div>
+                    <div class="divider-icon"><i class="fa-solid fa-envelope-open-text text-sm"></i></div>
+                    <div class="divider-line"></div>
+                </div>
+                
+<!--                <p class="text-sm md:text-base font-serif tracking-wide text-cream mb-1">Kindly respond by October 10th</p>-->
+                <p class="text-sm text-gold-300 opacity-80 mb-1">Lütfen katılım durumunu bildiriniz</p>
+                <p class="font-persian text-lg text-gold-300 opacity-80" dir="rtl">لطفاً حضور خود را اعلام فرمایید</p>
+            </div>
+
+            <!-- RSVP Form (Connected to Formspree) -->
+            <form action="https://formspree.io/f/xwvdpbeb" method="POST" class="space-y-6">
+                
+                <div class="space-y-4">
+                    <!-- Option 1: Yes -->
+                    <label class="flex items-center p-4 border border-gold-800/50 hover:bg-gold-900/20 cursor-pointer transition-colors group">
+                        <input type="radio" name="attendance" value="yes" class="custom-radio mr-4" required>
+                        <div class="flex-grow flex flex-col justify-center">
+                            <span class="font-serif tracking-widest text-sm text-cream group-hover:text-gold-200 transition-colors">YES, I/WE WILL ATTEND</span>
+                            <span class="text-xs text-gold-500 mt-1">EVET, KATILACAĞIZ</span>
+                            <span class="font-persian text-sm text-gold-400 text-right mt-1" dir="rtl">بله، شرکت می‌کنم.</span>
+                        </div>
+                    </label>
+
+                    <!-- Option 2: No -->
+                    <label class="flex items-center p-4 border border-gold-800/50 hover:bg-gold-900/20 cursor-pointer transition-colors group">
+                        <input type="radio" name="attendance" value="no" class="custom-radio mr-4">
+                        <div class="flex-grow flex flex-col justify-center">
+                            <span class="font-serif tracking-widest text-sm text-cream group-hover:text-gold-200 transition-colors">NO, I/WE CANNOT ATTEND</span>
+                            <span class="text-xs text-gold-500 mt-1">HAYIR, KATILAMAYACAĞIZ</span>
+                            <span class="font-persian text-sm text-gold-400 text-right mt-1" dir="rtl">خیر، نمی‌توانم شرکت کنم.</span>
+                        </div>
+                    </label>
+                </div>
+
+                <!-- Name Input -->
+                <div class="pt-4 border-t border-gold-900/50">
+                    <label for="guestName" class="block font-serif text-sm tracking-widest text-gold-400 mb-2">Guest Name(s)/Davetli Adı(lar)/نام مهمان(ها)</label>
+                    <!-- Added name="guestName" so the data is sent properly -->
+                    <input type="text" id="guestName" name="guestName" placeholder="Enter full name(s)" class="w-full bg-transparent border-b border-gold-600 py-2 text-cream focus:outline-none focus:border-gold-300 font-sans transition-colors placeholder-navy-800/50" required>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="text-center pt-6">
+                    <button type="submit" class="font-serif tracking-[0.2em] uppercase bg-transparent border border-gold-500 text-gold-400 px-8 py-3 hover:bg-gold-500 hover:text-navy-900 transition-all duration-300 w-full sm:w-auto">
+                        Send / Gönder / ارسال
+                    </button>
+                </div>
+            </form>
+
+            <!-- Footer / QR -->
+            <div class="mt-16 text-center border-t border-gold-800/30 pt-8">
+                <!-- Simulated QR Code (using a font awesome icon for layout, in reality this would be an img) -->
+                <div class="inline-block p-2 bg-cream rounded-sm mb-4">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://www.sheminomercan.wedding" alt="QR Code to website" class="w-20 h-20 opacity-90">
+                </div>
+                
+                <p class="font-serif tracking-widest text-xs text-gold-500 uppercase mt-2 hover:text-gold-300 transition-colors">
+                    <a href="#" target="_blank">www.sheminomercan.engagement</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Intersection Observer for fade-in animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        // Optional: stop observing once animated
+                        // observer.unobserve(entry.target); 
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in-up').forEach(element => {
+                observer.observe(element);
+            });
+
+            // Navigation Dots Logic
+            const sections = document.querySelectorAll('section');
+            const navDots = document.querySelectorAll('.nav-dot');
+
+            const navObserverOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.5 // Section is considered active when 50% visible
+            };
+
+            const navObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Remove active class from all dots
+                        navDots.forEach(dot => dot.classList.remove('active'));
+                        // Add active class to corresponding dot
+                        const activeDot = document.getElementById(`dot-${entry.target.id}`);
+                        if (activeDot) {
+                            activeDot.classList.add('active');
+                        }
+                    }
+                });
+            }, navObserverOptions);
+
+            sections.forEach(section => {
+                navObserver.observe(section);
+            });
+            
+            // Set initial active dot
+            if(navDots.length > 0) navDots[0].classList.add('active');
+        });
+    </script>
+</body>
+</html>
